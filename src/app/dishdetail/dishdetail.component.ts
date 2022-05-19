@@ -52,8 +52,6 @@ const DISH = {
 })
 export class DishdetailComponent implements OnInit {
 
-  dishDetails = DISH
-
   @Input()
   dish: Dish | undefined;
 
