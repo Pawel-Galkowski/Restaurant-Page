@@ -2,7 +2,7 @@ import { Dish } from './dish';
 
 export const DISHES: Dish[] = [
     {
-        id: '0',
+        id: 0,
         name: 'Uthappizza',
         image: '/assets/images/uthappizza.png',
         category: 'mains',
@@ -47,7 +47,7 @@ export const DISHES: Dish[] = [
         ],
     },
     {
-        id: '1',
+        id: 1,
         name: 'Zucchipakoda',
         image: '/assets/images/zucchipakoda.png',
         category: 'appetizer',
@@ -91,7 +91,7 @@ export const DISHES: Dish[] = [
         ],
     },
     {
-        id: '2',
+        id: 2,
         name: 'Vadonut',
         image: '/assets/images/vadonut.png',
         category: 'appetizer',
@@ -135,7 +135,7 @@ export const DISHES: Dish[] = [
         ],
     },
     {
-        id: '3',
+        id: 3,
         name: 'ElaiCheese Cake',
         image: '/assets/images/elaicheesecake.png',
         category: 'dessert',
