@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Leaders } from '../shared/leaders';
+import { LEADERS } from '../shared/leaders';
 
 @Component({
   selector: 'app-about',
@@ -10,7 +10,7 @@ export class AboutComponent implements OnInit {
 
   constructor() { }
 
-  leaders = Leaders
+  leaders = LEADERS
 
   ngOnInit(): void {
   }
