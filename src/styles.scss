@@ -33,8 +33,16 @@ $divider-color:        #BDBDBD;
   flex: 1 1 auto;
 }
 
+.container {
+  padding: 12px;
+}
+
 
 body {
   margin: 0;
   padding: 0;
+}
+
+.mat-button .mat-button-wrapper>*, .mat-flat-button .mat-button-wrapper>*, .mat-stroked-button .mat-button-wrapper>*, .mat-raised-button .mat-button-wrapper>*, .mat-icon-button .mat-button-wrapper>*, .mat-fab .mat-button-wrapper>*, .mat-mini-fab .mat-button-wrapper>* {
+  vertical-align: baseline !important;
 }
