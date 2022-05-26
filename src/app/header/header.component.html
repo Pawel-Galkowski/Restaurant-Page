@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span><img src="/assets/images/logo.png" height="30" width="41" /></span>
+  <span class="logo"><img src="/assets/images/logo.png" height="30" width="41" /></span>
   <a mat-button routerLink="/home" routerLinkActive="active">
     <fa-icon [icon]="icons.solid.faHome" size="lg"></fa-icon> Home
   </a>
@@ -11,6 +11,10 @@
   </a>
   <a mat-button routerLink="/contact" routerLinkActive="active">
     <fa-icon [icon]="icons.solid.faAddressCard" size="lg"></fa-icon> Contact
+  </a>
+  <span class="flex-spacer"></span>
+  <a mat-button (click)="openLoginForm()">
+    <fa-icon [icon]="icons.solid.faRightToBracket"></fa-icon> Login
   </a>
 </mat-toolbar>
 
