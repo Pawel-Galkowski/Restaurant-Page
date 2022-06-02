@@ -1,0 +1,36 @@
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 4% 2%;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.label-vertical {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px;
+  height: 48px;
+}
+
+.rating-value {
+  font-weight: 600;
+}
+
+.mat-slider {
+  max-width: 300px;
+}
+
+.mat-form-field {
+  max-width: 500px;
+}
+
+@media screen and (max-width: 992px) {
+  .mat-img img {
+    max-width: 500px;
+  }
+}

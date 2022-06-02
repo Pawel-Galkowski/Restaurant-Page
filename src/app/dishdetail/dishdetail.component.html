@@ -1,35 +1,28 @@
-<div
-  class="container"
-  fxLayout="row"
-  fxLayout.sm="column"
-  fxLayout.xs="column"
-  fxLayoutAlign.gt-md="space-around center"
-  fxLayoutGap="10px"
-  fxLayoutGap.xs="0"
->
+<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+  fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px" fxLayoutGap.xs="0">
   <div fxFlex="40">
     <div fxflex *ngIf="dish">
-      <mat-card>
+      <mat-card class="mat-img">
         <mat-card-header>
           <mat-card-title>
-            <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
+            <h3 *ngIf="dish">{{ dish.name | uppercase }}</h3>
           </mat-card-title>
         </mat-card-header>
-        <img
-          mat-card-image
-          src="{{ dish.image }}"
-          alt="{{ dish.name }}"
-        />
+        <img mat-card-image src="{{ dish.image }}" alt="{{ dish.name }}" />
         <mat-card-content>
           <p>{{ dish.description }}</p>
         </mat-card-content>
-        <mat-card-actions>
-          <button mat-button [routerLink]="['/dishdetail', prev]"><span class="fa fa-chevron-left fa-lg"></span></button>
+        <mat-card-actions class="flex-around">
+          <button mat-button [routerLink]="['/dishdetail', prev]">
+            <fa-icon [icon]="icons.solid.faChevronLeft"></fa-icon>
+          </button>
           <button mat-button (click)="goBack()">BACK</button>
           <button mat-button>LIKE</button>
           <button mat-button>SHARE</button>
-          <span class="flex-spacer"></span>
-          <button mat-button [routerLink]="['/dishdetail', next]"><span class="fa fa-chevron-right fa-lg"></span></button>
+          <mat-divider></mat-divider>
+          <button mat-button [routerLink]="['/dishdetail', next]">
+            <fa-icon [icon]="icons.solid.faChevronRight"></fa-icon>
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -37,16 +30,46 @@
 
   <div fxFlex="40">
     <mat-card *ngIf="dish">
-      <mat-card-header><h1>Comments</h1></mat-card-header>
-      <mat-card-content *ngFor="let comment of dish.comments">
+      <mat-card-header>
+        <h1>Comments</h1>
+      </mat-card-header>
+      <mat-card-content *ngFor="let com of dish.comments">
         <p>
-          <span> {{ comment.comment }} </span> <br />
-          <span> {{ comment.rating }} stars</span><br />
-          <span> -- {{ comment.author }}</span>
-          <span> {{ comment.date | date: "mediumDate" }}</span>
+          <span> {{ com.comment }} </span> <br />
+          <span> {{ com.rating }} stars</span><br />
+          <span> -- {{ com.author }}</span>
+          <span> {{ com.date | date: "mediumDate" }}</span>
         </p>
       </mat-card-content>
+      <mat-divider></mat-divider>
+      <mat-card-footer>
+        <form novalidate [formGroup]="commentForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <input matInput formControlName="author" placeholder="Author" type="text" required />
+            <mat-error *ngIf="formErrors.author">{{ formErrors.author }}</mat-error>
+          </mat-form-field>
+          <div class="label-vertical">
+            <label id="rating-label">Rating</label>
+            <label class="rating-value">{{ value }}</label>
+          </div>
+          <mat-slider
+            formControlName="rating"
+            [max]="5" [min]="1" step="1"
+            [(ngModel)]="value"
+            thumbLabel="true"
+            tickInterval="1"
+            [ngModelOptions]="{standalone: true}" 
+            aria-labelledby="rating-label">
+          </mat-slider>
+          <mat-error *ngIf="formErrors.Rating">{{formErrors.Rating}}</mat-error>
+          <mat-form-field>
+            <textarea matInput formControlName="comment" placeholder="Your Comment" rows="4" required></textarea>
+          </mat-form-field>
+          <button type="submit" mat-button class="background-primary text-floral-white">
+            Submit
+          </button>
+        </form>
+      </mat-card-footer>
     </mat-card>
   </div>
 </div>
-
