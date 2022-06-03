@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ChangeDetectorRef,AfterContentChecked} from '@angular/core'
 
 import { switchMap } from 'rxjs/operators';
 
@@ -9,18 +10,31 @@ import { GlobalConstants } from '../common/global-constants';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { Comment } from '../shared/Comment';
+import { DISHES } from '../shared/dishes';
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss']
 })
-export class DishdetailComponent implements OnInit {
+export class DishdetailComponent implements OnInit, AfterContentChecked {
+
+    constructor(
+      private changeDetector: ChangeDetectorRef,
+      private fb: FormBuilder,
+      private dishservice: DishService,
+      private route: ActivatedRoute,
+      private location: Location
+    ) { }
+  
+    ngAfterContentChecked() : void {
+      this.changeDetector.detectChanges();
+    }
 
     @ViewChild('fform')
 
-    rating = "rating"
-    value = 5;
+    value = 5
+    rate = 5
 
     commentFormDirective!: { resetForm: () => void }
     icons = GlobalConstants.fortawesome
@@ -33,14 +47,7 @@ export class DishdetailComponent implements OnInit {
       rating: new FormControl(),
       comment: new FormControl()
     });
-    comment!: Comment
-  
-    constructor(
-      private fb: FormBuilder,
-      private dishservice: DishService,
-      private route: ActivatedRoute,
-      private location: Location
-    ) { }
+    comment:any = new Comment
   
     ngOnInit() {
       this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
@@ -54,7 +61,7 @@ export class DishdetailComponent implements OnInit {
     createForm() {
       this.commentForm = this.fb.group({
         author: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)] ],
-        rating: [5, [Validators.required] ],
+        rating: [this.value, [Validators.required] ],
         comment: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(400)] ]
       });
   
@@ -65,7 +72,7 @@ export class DishdetailComponent implements OnInit {
 
     formErrors:any = {
       author: '',
-      rating: 5,
+      rating: this.value,
       comment: ''
     };
 
@@ -110,6 +117,10 @@ export class DishdetailComponent implements OnInit {
         rating: 5,
         comment: ''
       });
+
+      const selectedDish = DISHES.find(dish => dish.id === this.dish.id)
+      this.comment.date = Date.now()
+      selectedDish?.comments?.push(this.comment)
     }
   
     setPrevNext(dishId: string) {

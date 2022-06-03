@@ -41,6 +41,11 @@
           <span> {{ com.date | date: "mediumDate" }}</span>
         </p>
       </mat-card-content>
+      <p *ngIf="commentForm.valid">
+          <span> {{ commentForm.get("comment")?.value }}</span> <br />
+          <span> {{ commentForm.get("rating")?.value }} stars</span> <br />
+          <span> -- {{ commentForm.get("author")?.value }} </span>
+      </p>
       <mat-divider></mat-divider>
       <mat-card-footer>
         <form novalidate [formGroup]="commentForm" #fform="ngForm" (ngSubmit)="onSubmit()">
@@ -50,12 +55,12 @@
           </mat-form-field>
           <div class="label-vertical">
             <label id="rating-label">Rating</label>
-            <label class="rating-value">{{ value }}</label>
+            <label class="rating-value">{{ rate }}</label>
           </div>
           <mat-slider
             formControlName="rating"
             [max]="5" [min]="1" step="1"
-            [(ngModel)]="value"
+            [(ngModel)]="rate"
             thumbLabel="true"
             tickInterval="1"
             [ngModelOptions]="{standalone: true}" 

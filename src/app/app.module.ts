@@ -66,8 +66,8 @@ import { LoginComponent } from './login/login.component';
     MatSlideToggleModule,
     MatSliderModule,
     FontAwesomeModule,
-    ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
   providers: [DishService],
   bootstrap: [AppComponent],
