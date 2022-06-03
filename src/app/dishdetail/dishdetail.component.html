@@ -50,7 +50,7 @@
       <mat-card-footer>
         <form novalidate [formGroup]="commentForm" #fform="ngForm" (ngSubmit)="onSubmit()">
           <mat-form-field>
-            <input matInput formControlName="author" placeholder="Author" type="text" required />
+            <input matInput formControlName="author" placeholder="Name" type="text" required />
             <mat-error *ngIf="formErrors.author">{{ formErrors.author }}</mat-error>
           </mat-form-field>
           <div class="label-vertical">
@@ -66,11 +66,11 @@
             [ngModelOptions]="{standalone: true}" 
             aria-labelledby="rating-label">
           </mat-slider>
-          <mat-error *ngIf="formErrors.Rating">{{formErrors.Rating}}</mat-error>
           <mat-form-field>
             <textarea matInput formControlName="comment" placeholder="Your Comment" rows="4" required></textarea>
+            <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
           </mat-form-field>
-          <button type="submit" mat-button class="background-primary text-floral-white">
+          <button *ngIf="commentForm.valid" type="submit" mat-button class="background-primary text-floral-white">
             Submit
           </button>
         </form>

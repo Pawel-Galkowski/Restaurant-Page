@@ -61,7 +61,7 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
     createForm() {
       this.commentForm = this.fb.group({
         author: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)] ],
-        rating: [this.value, [Validators.required] ],
+        rating: this.value,
         comment: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(400)] ]
       });
   
@@ -70,9 +70,8 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
       this.onValueChanged();
     }
 
-    formErrors:any = {
+    formErrors: any = {
       author: '',
-      rating: this.value,
       comment: ''
     };
 
@@ -81,9 +80,6 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
         required: 'Author is required.',
         minlength: 'Author must be at least 2 characters long.',
         maxlength: 'Author cannot be more than 20 characters long.'
-      },
-      rating: {
-        required: 'Rating is required.',
       },
       comment: {
         required: 'Comment is required.',
