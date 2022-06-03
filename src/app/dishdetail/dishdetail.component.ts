@@ -25,7 +25,9 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
       private dishservice: DishService,
       private route: ActivatedRoute,
       private location: Location
-    ) { }
+    ) { 
+      this.createForm();
+    }
   
     ngAfterContentChecked() : void {
       this.changeDetector.detectChanges();
@@ -83,7 +85,7 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
       },
       comment: {
         required: 'Comment is required.',
-        pattern: 'Comment must contain at least 5 characters'
+        minlength: 'Comment must contain at least 5 characters'
       }
     }
 
