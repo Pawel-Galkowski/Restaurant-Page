@@ -3,6 +3,7 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ChangeDetectorRef,AfterContentChecked} from '@angular/core'
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { switchMap } from 'rxjs/operators';
 
@@ -15,7 +16,20 @@ import { DISHES } from '../shared/dishes';
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
-  styleUrls: ['./dishdetail.component.scss']
+  styleUrls: ['./dishdetail.component.scss'],
+  animations: [
+    trigger('visibility', [
+        state('shown', style({
+            transform: 'scale(1.0)',
+            opacity: 1
+        })),
+        state('hidden', style({
+            transform: 'scale(0.5)',
+            opacity: 0
+        })),
+        transition('* => *', animate('0.5s ease-in-out'))
+    ])
+  ]
 })
 export class DishdetailComponent implements OnInit, AfterContentChecked {
 
@@ -38,7 +52,7 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
 
     value = 5
     rate = 5
-
+    visibility = 'shown';
     errMess?: string;
     commentFormDirective!: { resetForm: () => void }
     icons = GlobalConstants.fortawesome
@@ -59,12 +73,16 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
         next: dishIds => this.dishIds = dishIds,
         error: errmess => this.errMess = <any>errmess
       });
-      this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
+      this.route.params.pipe(switchMap((params: Params) => {
+        this.visibility = 'hidden'; 
+        return this.dishservice.getDish(+params['id'])
+      }))
       .subscribe({
         next: (dish:any) => { 
           this.dish = dish; 
           this.dishcopy = dish;
           this.setPrevNext(dish['id'])
+          this.visibility = 'shown';
         },
         error: errmess => this.errMess = <any>errmess
       })
