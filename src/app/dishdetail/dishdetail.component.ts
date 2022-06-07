@@ -3,10 +3,10 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ChangeDetectorRef,AfterContentChecked} from '@angular/core'
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { switchMap } from 'rxjs/operators';
 
+import { visibility, flyInOut, expand } from '../animations/app.animation';
 import { GlobalConstants } from '../common/global-constants';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
@@ -17,18 +17,15 @@ import { DISHES } from '../shared/dishes';
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss'],
+  host: {
+    '[@flyInOut]': 'true',
+    '[@expand]': 'true',
+    'style': 'display: block;'
+  },
   animations: [
-    trigger('visibility', [
-        state('shown', style({
-            transform: 'scale(1.0)',
-            opacity: 1
-        })),
-        state('hidden', style({
-            transform: 'scale(0.5)',
-            opacity: 0
-        })),
-        transition('* => *', animate('0.5s ease-in-out'))
-    ])
+    flyInOut(),
+    visibility(),
+    expand()
   ]
 })
 export class DishdetailComponent implements OnInit, AfterContentChecked {
