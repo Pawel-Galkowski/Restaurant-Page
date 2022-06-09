@@ -1,4 +1,6 @@
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { BehaviorSubject, Observable, of } from 'rxjs'
+import { delay, switchMap } from 'rxjs/operators'
 
 export function visibility() {
     return trigger('visibility', [
@@ -35,4 +37,16 @@ export function expand() {
             animate('200ms ease-in', style({ opacity: 1, transform: 'translateX(0)' }))
         ])
     ]);
+}
+
+export class LoadingSpinner {
+    isLoading: boolean = false
+
+    start () {
+        this.isLoading = true
+    }
+
+    finish() {
+        this.isLoading = false
+    }
 }

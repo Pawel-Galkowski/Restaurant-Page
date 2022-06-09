@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
@@ -69,6 +70,7 @@ import { HighlightDirective } from './directives/highlight.directive';
     MatSelectModule,
     MatSlideToggleModule,
     MatSliderModule,
+    MatProgressSpinnerModule,
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})

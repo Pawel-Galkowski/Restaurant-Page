@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { LoadingSpinner } from '../animations/app.animation';
 import { Feedback, ContactType } from '../shared/feedback';
 import { flyInOut, expand } from '../animations/app.animation'
 
@@ -15,7 +16,7 @@ import { flyInOut, expand } from '../animations/app.animation'
   },
   animations: [
     flyInOut(),
-    expand()
+    expand(),
   ]
 })
 export class ContactComponent implements OnInit {
@@ -26,6 +27,14 @@ export class ContactComponent implements OnInit {
   feedbackForm!: FormGroup;
   feedback: Feedback = new Feedback;
   contactType = ContactType;
+  loadingSpinner = new LoadingSpinner()
+  isFeedback: boolean = false
+
+  isContactAvailable() {
+    if(this.feedback.agree) 
+      return 'Yes'
+    else return 'No'
+  }
 
   formErrors: any = {
     firstname: '',
@@ -77,7 +86,14 @@ export class ContactComponent implements OnInit {
     this.onValueChanged();
   }
 
+  showFeedback(){
+    this.loadingSpinner.finish()
+    this.isFeedback = true
+    setTimeout(() => this.isFeedback = false, 5000)
+  }
+
   onSubmit() {
+    this.loadingSpinner.start()
     this.feedback = this.feedbackForm.value;
     this.feedbackForm.reset({
       firstname: '',
@@ -88,7 +104,8 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
-    this.feedbackFormDirective.resetForm();
+    setTimeout(() =>  this.showFeedback(), 5000)
+    this.feedbackFormDirective.resetForm()
   }
 
   onValueChanged(data?: any) {

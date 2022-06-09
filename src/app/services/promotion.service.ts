@@ -22,14 +22,13 @@ export class PromotionService {
       .pipe(catchError(this.processHTTPMsgService.handleError))
   }
 
-  getPromotion(id: string): Observable<Promotion | any> {
+  getPromotion(id: string): Observable<Promotion[] | any> {
     return this.getPromotions().pipe(map(promotions => promotions.filter(promo => promo.id === id)[0]))
       .pipe(catchError(error => error))
   }
 
-  getFeaturedPromotion(): Observable<Promotion | any> {
-    return this.getPromotions().pipe(map(promotions => 
-      promotions.filter(promo => promo.featured)[0]
-      )).pipe(catchError(error => error))
+  getFeaturedPromotion(): Observable<Promotion[] | any> {
+    return this.getPromotions().pipe(map(promotions => promotions.filter(promo => promo.featured)[0]))
+      .pipe(catchError(error => error))
   }
 }
