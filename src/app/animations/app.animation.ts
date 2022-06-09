@@ -38,15 +38,3 @@ export function expand() {
         ])
     ]);
 }
-
-export class LoadingSpinner {
-    isLoading: boolean = false
-
-    start () {
-        this.isLoading = true
-    }
-
-    finish() {
-        this.isLoading = false
-    }
-}
