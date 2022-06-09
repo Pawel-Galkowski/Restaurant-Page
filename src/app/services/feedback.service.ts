@@ -1,5 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+// import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+import { BaseURL } from '../shared/baseurl';
 import { Feedback } from '../shared/feedback';
+import { ProcessHTTPMsgService } from './process-httpmsg.service';
 
 
 @Injectable({
@@ -7,34 +14,13 @@ import { Feedback } from '../shared/feedback';
 })
 export class FeedbackService {
 
-  constructor() { }
-  isFeedback: boolean = false
-  isLoading: boolean = false
-  informations: Feedback = new Feedback
+  constructor(
+    private http: HttpClient,
+    private processHTTPMsgService: ProcessHTTPMsgService
+  ) { }
 
-  startLoading() {
-    this.isLoading = true
-  }
-
-  finishLoading() {
-    this.isLoading = false
-  }
-
-  showFeedback(){
-    this.finishLoading()
-    this.isFeedback = true
-    setTimeout(() => this.isFeedback = false, 5000)
-  }
-
-  createFeedback(param: any) {
-    this.startLoading()
-    this.informations = param
-    setTimeout(() =>  this.showFeedback(), 5000)
-  }
-
-  isContactAvailable() {
-    if(this.informations.agree) 
-      return 'Yes'
-    else return 'No'
+  submitFeedback(data: any) {
+    return this.http.post<Feedback>(BaseURL + "feedback", data)
+      .pipe(catchError(this.processHTTPMsgService.handleError))
   }
 }

@@ -39,22 +39,22 @@
   </div>
   <div fxFlex fxFlexOffset="20px" class="form-size">
     <h3>Send us your Feedback</h3>
-    <div *ngIf="feedback.isLoading && !feedback.isFeedback"> <!-- true && !false-->
+    <div *ngIf="isLoading && !isFeedback"> <!-- true && !false-->
       <h4>Submitting Form</h4>
       <mat-spinner></mat-spinner>
     </div>
-    <div *ngIf="!feedback.isLoading && feedback.isFeedback"> <!-- !false && true-->
+    <div *ngIf="!isLoading && isFeedback"> <!-- !false && true-->
       <h4>Your Submission</h4>
-      <p>First Name: {{feedback.informations.firstname}}</p>
-      <p>Last Name: {{feedback.informations.lastname}}</p>
-      <p>Tel. Number: {{feedback.informations.telnum}}</p>
-      <p>Email: {{feedback.informations.email}}</p>
-      <p>Contact You?: {{feedback.isContactAvailable()}}</p>
-      <p *ngIf="feedback.informations.agree">How?: {{feedback.informations.contacttype}}</p>
-      <p *ngIf="feedback.informations.message">Feedback: {{feedback.informations.message}}</p>
+      <p>First Name: {{feedbackData?.firstname}}</p>
+      <p>Last Name: {{feedbackData?.lastname}}</p>
+      <p>Tel. Number: {{feedbackData?.telnum}}</p>
+      <p>Email: {{feedbackData?.email}}</p>
+      <p>Contact You?: {{feedbackData?.agree}}</p>
+      <p *ngIf="feedbackData?.agree">How?: {{feedbackData?.contacttype}}</p>
+      <p *ngIf="feedbackData?.message">Feedback: {{feedbackData?.message}}</p>
     </div>
-    <div *ngIf="!feedback.isLoading  && !feedback.isFeedback"> <!-- !false && !false-->
-      <p *ngIf="formErrors">Status form: {{ feedbackForm.status | json }}</p>
+    <div *ngIf="!isLoading  && !isFeedback"> <!-- !false && !false-->
+      <p *ngIf="formErrors">Status form: {{ feedbackForm.status }}</p>
       <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
         <p>
           <mat-form-field class="half-width">

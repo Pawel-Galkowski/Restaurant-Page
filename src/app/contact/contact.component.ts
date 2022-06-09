@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { FeedbackService } from '../services/feedback.service'
-import { ContactType } from '../shared/feedback';
+import { ContactType, Feedback } from '../shared/feedback';
 import { flyInOut, expand } from '../animations/app.animation'
 
 @Component({
@@ -21,12 +21,29 @@ import { flyInOut, expand } from '../animations/app.animation'
 })
 export class ContactComponent implements OnInit {
 
+  constructor(
+    private fb: FormBuilder,
+    private feedback: FeedbackService
+    ) {
+    this.createForm();
+  }
+
+  ngOnInit() {}
+
   @ViewChild('fform')
 
   feedbackFormDirective!: { resetForm: () => void; }
   feedbackForm!: FormGroup
-  feedback = new FeedbackService
   contactType = ContactType
+  feedbackData?: Feedback
+  isLoading: Boolean = false
+  isFeedback: Boolean = false
+
+  showFeedback(){
+    this.isLoading = false
+    this.isFeedback = true
+    setTimeout(() => this.isFeedback = false, 5000)
+  }
 
   formErrors: any = {
     firstname: '',
@@ -56,12 +73,6 @@ export class ContactComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) {
-    this.createForm();
-  }
-
-  ngOnInit() {}
-
   createForm() {
     this.feedbackForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
@@ -79,7 +90,11 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    this.feedback.createFeedback(this.feedbackForm.value)
+    this.isLoading = true
+    this.feedback.submitFeedback(this.feedbackForm.value).subscribe(data => {
+      this.feedbackData = data,
+      setTimeout(() => this.showFeedback(), 5000)
+    })
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
