@@ -1,5 +1,5 @@
 export class Leader {
-    id!: number
+    id!: string
     name!: string
     abbr!: string
     image!: string

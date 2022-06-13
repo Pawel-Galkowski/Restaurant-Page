@@ -1,11 +1,11 @@
 import { Routes } from "@angular/router";
 
-import { MenuComponent } from "../menu/menu.component";
-import { DishdetailComponent } from "../dishdetail/dishdetail.component";
-import { HomeComponent } from "../home/home.component";
-import { AboutComponent } from "../about/about.component";
-import { ContactComponent } from "../contact/contact.component";
-import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
+import { MenuComponent } from "../pages/menu/menu.component";
+import { DishdetailComponent } from "../components/dishdetail/dishdetail.component";
+import { HomeComponent } from "../pages/home/home.component";
+import { AboutComponent } from "../pages/about/about.component";
+import { ContactComponent } from "../pages/contact/contact.component";
+import { PageNotFoundComponent } from "../pages/page-not-found/page-not-found.component";
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -14,5 +14,6 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent},
     { path: 'dishdetail/:id', component: DishdetailComponent },
     { path: '**', component: PageNotFoundComponent },
+    { path: 'not-found', component: PageNotFoundComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

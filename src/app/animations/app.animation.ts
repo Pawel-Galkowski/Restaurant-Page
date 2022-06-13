@@ -1,6 +1,4 @@
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { BehaviorSubject, Observable, of } from 'rxjs'
-import { delay, switchMap } from 'rxjs/operators'
 
 export function visibility() {
     return trigger('visibility', [

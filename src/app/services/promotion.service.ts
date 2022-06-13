@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { ProcessHTTPMsgService } from '../services/process-httpmsg.service';
+import { LoaderService } from './loader.service'
 
 import { BaseURL } from '../shared/baseurl';
 import { Promotion } from '../shared/promotion';
-import { ProcessHTTPMsgService } from './process-httpmsg.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,21 +15,24 @@ import { ProcessHTTPMsgService } from './process-httpmsg.service';
 
 export class PromotionService {
 
-  constructor(private http: HttpClient,
-    private processHTTPMsgService: ProcessHTTPMsgService) { }
+  constructor(
+    private processHTTPMsgService: ProcessHTTPMsgService,
+    private http: HttpClient,
+    ) { }
 
-  getPromotions(): Observable<Promotion[]> {
-    return this.http.get<Promotion[]>(BaseURL + 'promotions')
-      .pipe(catchError(this.processHTTPMsgService.handleError))
+    url:string = BaseURL + 'promotions'
+
+  getPromotions(): Observable<Promotion[] | any> {
+    return this.http.get<Promotion[]>(this.url).pipe(catchError(this.processHTTPMsgService.handleError))
   }
 
   getPromotion(id: string): Observable<Promotion[] | any> {
-    return this.getPromotions().pipe(map(promotions => promotions.filter(promo => promo.id === id)[0]))
-      .pipe(catchError(error => error))
+    return this.http.get<Promotion[]>(this.url).pipe(map(param => param.filter(
+      (opam: any) => opam.id === id)[0])).pipe(catchError(this.processHTTPMsgService.handleError))
   }
 
   getFeaturedPromotion(): Observable<Promotion[] | any> {
-    return this.getPromotions().pipe(map(promotions => promotions.filter(promo => promo.featured)[0]))
-      .pipe(catchError(error => error))
+    return this.http.get<Promotion[]>(this.url).pipe(map(param => param.filter(
+      (opam: any) => opam.featured)[0])).pipe(catchError(this.processHTTPMsgService.handleError))
   }
 }

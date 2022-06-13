@@ -7,6 +7,7 @@ import { map, catchError } from 'rxjs/operators';
 import { BaseURL } from '../shared/baseurl';
 import { Dish } from '../shared/dish';
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
+import { Comment } from '../shared/Comment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,6 @@ export class DishService {
     };
     return this.http.put<Dish>(BaseURL + 'dishes/' + dish.id, dish, httpOptions)
       .pipe(catchError(this.processHTTPMsgService.handleError));
-  
   }
 
   getDishes(): Observable<Dish[]> {
@@ -34,7 +34,7 @@ export class DishService {
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
-  getDish(id: number): Observable<Dish> {
+  getDish(id: string): Observable<Dish> {
     return this.http.get<Dish>(BaseURL + 'dishes/' + id)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
@@ -44,7 +44,7 @@ export class DishService {
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
-  getDishIds(): Observable<number[] | any> {
+  getDishIds(): Observable<string[] | any> {
     return this.getDishes().pipe(map(dishes => dishes.map(dish => dish.id)))
       .pipe(catchError(error => error));
   }
