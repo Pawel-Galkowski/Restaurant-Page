@@ -21,7 +21,7 @@ import { flyInOut, expand } from '../../animations/app.animation'
 export class MenuComponent implements OnInit {
   constructor(
     private dishService: DishService,
-    @Inject('BaseURL') public BaseURL: string
+    @Inject('imageUrl') public BaseURL: string
   ) { }
 
   dishes: any

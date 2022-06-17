@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
-import { BaseURL } from '../../shared/baseurl'
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-top-app',
@@ -9,8 +7,9 @@ import { BaseURL } from '../../shared/baseurl'
 })
 export class TopAppComponent implements OnInit {
 
-  constructor() { }
-  url = BaseURL
+  constructor(
+    @Inject('imageUrl') public imageUrl: string
+  ) { }
 
   ngOnInit(): void {
   }

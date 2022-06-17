@@ -21,7 +21,7 @@ import { flyInOut, expand } from '../../animations/app.animation';
 export class AboutComponent implements OnInit {
 
   constructor(
-    @Inject('BaseURL') public BaseURL: string,
+    @Inject('imageUrl') public BaseURL: string,
     private leaderService: LeaderService
   ) { }
 

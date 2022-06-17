@@ -26,7 +26,7 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor'
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { DishService } from './services/dish.service';
-import { BaseURL } from './shared/baseurl';
+import { BaseURL, imageUrl } from './shared/baseurl';
 import { HighlightDirective } from './directives/highlight.directive';
 import { DishdetailComponent } from './components/dishdetail/dishdetail.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -92,6 +92,10 @@ import { LoaderComponent } from './components/loader/loader.component';
     {
       provide: 'BaseURL', 
       useValue: BaseURL,
+    },
+    {
+      provide: 'imageUrl',
+      useValue: imageUrl,
     },
     {
       provide: HTTP_INTERCEPTORS,

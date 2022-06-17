@@ -36,7 +36,7 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
       private route: ActivatedRoute,
       private location: Location,
       private router: Router,
-      @Inject('BaseURL') public BaseURL: string
+      @Inject('imageUrl') public imageUrl: string
     ) { 
       this.createForm();
     }
