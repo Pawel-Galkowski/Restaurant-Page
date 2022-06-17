@@ -13,7 +13,7 @@ export const routes: Routes = [
     { path: 'about', component: AboutComponent},
     { path: 'contact', component: ContactComponent},
     { path: 'dishdetail/:id', component: DishdetailComponent },
-    { path: '**', component: PageNotFoundComponent },
     { path: 'not-found', component: PageNotFoundComponent },
-    { path: '', redirectTo: '/home', pathMatch: 'full' }
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', component: PageNotFoundComponent },
 ];
