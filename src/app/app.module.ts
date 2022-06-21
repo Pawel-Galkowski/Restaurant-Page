@@ -1,7 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,7 +18,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'; 
 import { HttpClientModule, HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
 
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor'
@@ -65,7 +63,6 @@ import { LoaderComponent } from './components/loader/loader.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    FlexLayoutModule,
     MatGridListModule,
     MatToolbarModule,
     MatListModule,
@@ -82,9 +79,6 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatProgressSpinnerModule,
     FontAwesomeModule,
     FormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC9RGjz_S2_XC8tb1BNLEQnj0QU21QKAFA'
-    }),
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
   providers: [

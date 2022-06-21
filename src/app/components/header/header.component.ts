@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 
 import { GlobalConstants } from '../../common/global-constants';
 import { LoginComponent } from '../login/login.component';
-import { BaseURL } from '../../shared/baseurl'
+import { imageUrl } from '../../shared/baseurl'
 
 @Component({
   selector: 'app-header',
@@ -13,9 +13,10 @@ import { BaseURL } from '../../shared/baseurl'
 export class HeaderComponent implements OnInit {
 
   icons = GlobalConstants.fortawesome
-  url = BaseURL
   
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    @Inject('imageUrl') public imageUrl: string) { }
 
   ngOnInit() {
   }

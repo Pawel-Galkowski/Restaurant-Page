@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     private dishservice: DishService,
     private promotionservice: PromotionService,
     private leaderservice: LeaderService,
-    @Inject('imageUrl') public BaseURL: string
+    @Inject('imageUrl') public imageUrl: string
   ) { }
 
   async ngOnInit() {
