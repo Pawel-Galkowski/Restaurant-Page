@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -20,7 +20,14 @@ export class FeedbackService {
   ) { }
 
   submitFeedback(data: any) {
-    return this.http.post<Feedback>(BaseURL + "feedback", data)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Credentials': 'true',
+        "Access-Control-Allow-Origin": "*"
+      })
+    };
+    return this.http.post<Feedback>(BaseURL + "feedback", data, httpOptions)
       .pipe(catchError(this.processHTTPMsgService.handleError))
   }
 }

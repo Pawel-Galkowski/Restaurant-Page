@@ -1,2 +1,2 @@
-export const BaseURL = 'https://climactical-hoists.000webhostapp.com/db.json/'
-export const imageUrl = 'https://climactical-hoists.000webhostapp.com/'
+export const BaseURL = window.location.protocol + "//" + window.location.hostname + ':8080/';
+export const imageUrl = window.location.protocol + "//" + window.location.hostname + ':8080/';

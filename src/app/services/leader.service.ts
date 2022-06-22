@@ -22,8 +22,8 @@ export class LeaderService {
   }
 
   getFeaturedLeader(): Observable<Leader | any> {
-    return this.getLeaders().pipe(map(leaders => 
-      leaders.filter(leader => leader.featured)[0]
-    )).pipe(catchError(error => error))
+    return this.getLeaders()
+    .pipe(map(leaders => leaders.filter(leader => leader.featured)[0]))
+    .pipe(catchError(error => error))
   }
 }

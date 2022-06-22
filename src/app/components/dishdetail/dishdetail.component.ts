@@ -49,11 +49,10 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
 
     value = 5
     rate = 5
-    visibility = 'shown';
     errMess?: string;
     commentFormDirective!: { resetForm: () => void }
     icons = GlobalConstants.fortawesome
-    dish: Dish = new Dish;
+    dish!: Dish;
     dishIds!: string[]
     prev!: string
     next!: string
@@ -70,14 +69,14 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
         error: errmess => this.errMess = <any>errmess
       });
       this.route.params.pipe(switchMap((params: Params) => {
-        this.visibility = 'hidden'; 
-        return this.dishservice.getDish(params['id'])
-      }))
+        const a = +params['id']
+        return this.dishservice.getDish(a.toString())
+        }
+      ))
       .subscribe({
-        next: (dish:any) => { 
+        next: (dish:any) => {
           this.dish = dish; 
           this.setPrevNext(dish['id'])
-          this.visibility = 'shown';
         },
         error: errmess => {
           this.errMess = <any>errmess

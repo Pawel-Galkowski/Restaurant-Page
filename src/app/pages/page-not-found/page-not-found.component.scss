@@ -35,24 +35,12 @@ body {
   flex-direction: row;
   justify-content: space-around;
   background: linear-gradient(#0C0E10 0%, #446182 20%, #446182 75%, #0C0E10 100%);
-  @include smallscreens {
-    flex-direction: column;
-    padding-bottom: 0vh;
-  }
 }
 .section {
   width: 40%;
   @include smallscreens {
     width: 100%;
     height: 40%;
-    position: absolute;
-    top: 0;
-  }
-  .inner-content {
-    @include smallscreens {
-      position: relative;
-      padding: 1rem 0;
-    }
   }
 }
 .heading {
@@ -63,9 +51,8 @@ body {
   padding: 0;
   text-shadow: 0 0 1rem #fefefe;
   @include smallscreens {
-    font-size: 7em;
+    font-size: 5em;
     line-height: 1.15;
-    margin: 0;
   }
 }
 .subheading {

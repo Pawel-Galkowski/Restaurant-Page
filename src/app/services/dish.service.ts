@@ -7,7 +7,6 @@ import { map, catchError } from 'rxjs/operators';
 import { BaseURL } from '../shared/baseurl';
 import { Dish } from '../shared/dish';
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
-import { Comment } from '../shared/Comment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,9 @@ export class DishService {
   putDish(dish: Dish): Observable<Dish> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json'
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Credentials': 'true',
+        "Access-Control-Allow-Origin": "*"
       })
     };
     return this.http.put<Dish>(BaseURL + 'dishes/' + dish.id, dish, httpOptions)
@@ -35,17 +36,19 @@ export class DishService {
   }
 
   getDish(id: string): Observable<Dish> {
-    return this.http.get<Dish>(BaseURL + 'dishes/' + id)
+    return this.http.get<Dish>(BaseURL + 'dishes' + `/${id}`)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
-  getFeaturedDish(): Observable<Dish> {
-    return this.http.get<Dish[]>(BaseURL + 'dishes?featured=true').pipe(map(dishes => dishes[0]))
+  getFeaturedDish(): Observable<Dish | any> {
+    return this.getDishes()
+      .pipe(map(dishes => dishes.filter(dish => dish.featured)[0]))
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   getDishIds(): Observable<string[] | any> {
-    return this.getDishes().pipe(map(dishes => dishes.map(dish => dish.id)))
+    return this.getDishes()
+      .pipe(map(dishes => dishes.map(dish => dish.id)))
       .pipe(catchError(error => error));
   }
 }
