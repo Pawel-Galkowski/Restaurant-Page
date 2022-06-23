@@ -18,15 +18,13 @@ export class DishService {
     private processHTTPMsgService: ProcessHTTPMsgService
   ) { }
 
-  putDish(dish: Dish): Observable<Dish> {
+  putDish(comment: Comment, id: string | undefined): Observable<Comment> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Access-Control-Allow-Credentials': 'true',
-        "Access-Control-Allow-Origin": "*"
+        'Content-Type':  'application/json'
       })
     };
-    return this.http.put<Dish>(BaseURL + 'dishes/' + dish.id, dish, httpOptions)
+    return this.http.put<Comment>(BaseURL + 'dishes/' + id, comment, httpOptions)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
@@ -35,7 +33,7 @@ export class DishService {
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
-  getDish(id: string): Observable<Dish> {
+  getDish(id?: string): Observable<Dish> {
     return this.http.get<Dish>(BaseURL + 'dishes' + `/${id}`)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }

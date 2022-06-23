@@ -33,3 +33,14 @@ $white: floralwhite;
     background: $background-moredark;
     color: $white;
 }
+
+
+@media screen and (max-width: 400px) {
+    .menu-text {
+        display: none;
+    }
+
+    .mat-button {
+        min-width: auto;
+    }
+}

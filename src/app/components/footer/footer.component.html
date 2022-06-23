@@ -1,50 +1,46 @@
-<div class="container footer" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="center center"
-    fxLayoutGap="10px">
-    <div fxFlex="100" fxFlex.gt-sm="50" style="width: 100%">
-        <div fxLayout="row">
-            <div fxFlex="40" fxFlexOffset="20px">
-                <mat-nav-list>
-                    <h4 style="padding-left: 16px">Links</h4>
-                    <mat-list-item>
-                        <a routerLink="/home">
-                            <fa-icon [icon]="icons.solid.faHome" size="lg"></fa-icon> Home
-                        </a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a routerLink="/about">
-                            <fa-icon [icon]="icons.solid.faInfo" size="lg"></fa-icon>
-                            About
-                        </a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a routerLink="/menu">
-                            <fa-icon [icon]="icons.solid.faList" size="lg"></fa-icon> Menu
-                        </a>
-                    </mat-list-item>
-                    <mat-list-item>
-                        <a routerLink="/contact">
-                            <fa-icon [icon]="icons.solid.faAddressCard" size="lg"></fa-icon>
-                            Contact
-                        </a>
-                    </mat-list-item>
-                </mat-nav-list>
-            </div>
-            <div fxFlex="55">
+<div class="container footer">
+    <div class="main-section">
+        <mat-nav-list>
+            <h4 style="padding-left: 16px">Links</h4>
+            <mat-list-item>
+                <a routerLink="/home">
+                    <fa-icon [icon]="icons.solid.faHome" size="lg"></fa-icon> Home
+                </a>
+            </mat-list-item>
+            <mat-list-item>
+                <a routerLink="/about">
+                    <fa-icon [icon]="icons.solid.faInfo" size="lg"></fa-icon>
+                    About
+                </a>
+            </mat-list-item>
+            <mat-list-item>
+                <a routerLink="/menu">
+                    <fa-icon [icon]="icons.solid.faList" size="lg"></fa-icon> Menu
+                </a>
+            </mat-list-item>
+            <mat-list-item>
+                <a routerLink="/contact">
+                    <fa-icon [icon]="icons.solid.faAddressCard" size="lg"></fa-icon>
+                    Contact
+                </a>
+            </mat-list-item>
+        </mat-nav-list>
+        <div class="flex-center">
+            <div>
                 <h4>Our Address</h4>
                 <address style="font-size: 80%">
-                    121, Clear Water Bay Road<br />
-                    Clear Water Bay, Kowloon<br />
-                    HONG KONG<br />
-                    <fa-icon [icon]="icons.solid.faPhone"></fa-icon>&nbsp;+852 1234
-                    5678<br />
-                    <fa-icon [icon]="icons.solid.faFax"></fa-icon>&nbsp;+852 8765 4321<br />
-                    <fa-icon [icon]="icons.solid.faEnvelope"></fa-icon>&nbsp;
-                    <a href="mailto:confusion@food.net">confusion@food.net</a>
+                121, Clear Water Bay Road<br />
+                Clear Water Bay, Kowloon<br />
+                HONG KONG<br />
+                <fa-icon [icon]="icons.solid.faPhone"></fa-icon>&nbsp;+852 1234 5678<br />
+                <fa-icon [icon]="icons.solid.faFax"></fa-icon>&nbsp;+852 8765 4321<br />
+                <fa-icon [icon]="icons.solid.faEnvelope"></fa-icon>&nbsp;
+                <a href="mailto:confusion@food.net">confusion@food.net</a>
                 </address>
             </div>
         </div>
     </div>
-    <div fxFlex="100" fxFlex.gt-sm="45">
+    <div class="flex">
         <div style="text-align: center">
             <a mat-icon-button class="btn-google-plus" href="http://google.com/+">
                 <fa-icon [icon]="icons.brands.faGooglePlusG" size="lg"></fa-icon>

@@ -32,8 +32,8 @@ export class ContactComponent implements OnInit {
 
   @ViewChild('fform')
   
-  lat = 51.678418;
-  lng = 7.809007;
+  lat = 22.333823;
+  lng = 114.218278;
   feedbackForm!: FormGroup
   contactType = ContactType
   feedbackData?: Feedback

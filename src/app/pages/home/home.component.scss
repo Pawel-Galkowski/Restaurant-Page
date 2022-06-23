@@ -1,0 +1,46 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+}
+
+.cardStyle {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.8fr 3fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 10px;
+    box-sizing: border-box;
+
+    img {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .container {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      
+      & > * {
+        width: calc(50% - 10px)
+      }
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        & > * {
+            width: 100%
+        }
+      }
+}

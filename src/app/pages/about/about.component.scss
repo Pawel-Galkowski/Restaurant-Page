@@ -1,3 +1,40 @@
-.mg-left {
-    margin-left: 5px;
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flex {
+    display: flex;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.grid-system {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .grid-system {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      
+      & > * {
+        width: 100%
+      }
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .flex-column {
+        display: flex;
+        flex-direction: column;
+    }
 }

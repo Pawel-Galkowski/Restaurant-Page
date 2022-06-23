@@ -1,15 +1,13 @@
-<div class="container" fxLayout="column" fxLayoutGap="10px">
-  <div fxFlex>
-    <div>
-      <h3>Contact Us</h3>
-      <hr>
-    </div>
+<div class="container">
+  <div>
+    <h3>Contact Us</h3>
+    <hr>
   </div>
 
-  <div fxFlex>
+  <div>
     <h3>Location Information</h3>
-    <div fxLayout="column" fxLayout.gt-sm="row">
-      <div fxFlex="50" fxFlexOffset="20px">
+    <div class="row-layout">
+      <div>
         <h4>Our Address</h4>
         <address>
           121, Clear Water Bay Road<br>
@@ -27,13 +25,13 @@
           <a mat-raised-button href="mailto:confusion@food.net"><i class="fa fa-envelope-o"></i> Email</a>
         </div>
       </div>
-      <div fxFlex="40">
+      <div>
         <h4>Map of our Location</h4>
         <app-google-map></app-google-map>
       </div>
     </div>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div class="form-size">
     <h3>Send us your Feedback</h3>
     <div *ngIf="isLoading && !isFeedback"> <!-- true && !false-->
       <h4>Submitting Form</h4>

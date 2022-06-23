@@ -142,18 +142,20 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
         comment: ''
       });
 
-      this.comment.date = Date.now()
-      this.dishservice.putDish(this.dish).subscribe({
-        next: dish => this.dish = dish,
-        error: errmess => { 
-         this.dish = {
-          id: this.dish.id
-         }
-         this.errMess = <any>errmess
+      this.comment.date = new Date().toISOString()
+      this.dishservice.putDish(this.comment, this.dish.id).subscribe({
+        error: errmess => {
+          this.errMess = <any>errmess
         }
       })
-      this.comment.date = Date.now()
-      this.dish?.comments?.push(this.comment)
+
+      this.dishservice.getDish(this.dish.id).subscribe({
+        next: dish => {
+          this.dish = dish
+          location.reload()
+        },
+        error: errmess => this.errMess = <any>errmess
+      });
     }
   
     setPrevNext(dishId: string) {
