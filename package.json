@@ -10,8 +10,7 @@
     "start": "concurrently \"npm run database\" \"npm run angular\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "heroku-postbuild": "npm install && npm run build"
+    "test": "ng test"
   },
   "dependencies": {
     "@angular/animations": "^14.0.0",
