@@ -19,6 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { FormsModule, ReactiveFormsModule} from '@angular/forms'; 
 import { HttpClientModule, HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { Overlay } from '@angular/cdk/overlay';
 
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor'
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -82,6 +83,12 @@ import { LoaderComponent } from './components/loader/loader.component';
     ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
   providers: [
+    MatDialogModule,
+    Overlay,
+    MatFormFieldModule,
+    FormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
     DishService,
     {
       provide: 'BaseURL', 
