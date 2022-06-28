@@ -6,7 +6,7 @@
   "scripts": {
     "database": "nodemon --max_old_space_size=2560 ./json-server/app.js",
     "angular": "ng serve",
-    "start": "concurrently \"npm run database\" \"npm run angular\"",
+    "start": "concurrently \"npm run angular\" \"npm run database\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -33,16 +33,16 @@
     "express": "^4.18.1",
     "husky": "^8.0.1",
     "json-server": "^0.17.0",
-    "path": "^0.12.7",
-    "rxjs": "~7.5.0",
-    "zone.js": "~0.11.4",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "nodemon": "^2.0.16",
-    "typescript": "^4.6.4"
+    "path": "^0.12.7",
+    "rxjs": "~7.5.0",
+    "typescript": "^4.6.4",
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.1",
@@ -52,5 +52,16 @@
     "@types/jasmine": "~3.10.0",
     "@types/jest": "^28.1.1",
     "@types/node": "^17.0.42"
+  },
+  "projects": {
+    "my-app": {
+      "architect": {
+        "build": {
+          "options": {
+            "aot": true
+          }
+        }
+      }
+    }
   }
 }
