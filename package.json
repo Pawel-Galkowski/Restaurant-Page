@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "database": "nodemon ./json-server/app.js",
+    "database": "nodemon --max_old_space_size=2560 ./json-server/app.js",
     "angular": "ng serve",
     "start": "concurrently \"npm run database\" \"npm run angular\"",
     "build": "ng build",
