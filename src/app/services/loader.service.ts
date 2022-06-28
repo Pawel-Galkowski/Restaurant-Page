@@ -16,29 +16,24 @@ export class LoaderService {
   show(): void {
     // Hack avoiding `ExpressionChangedAfterItHasBeenCheckedError` error
     Promise.resolve(null).then(() => {
-        if (!this.overlayRef) {
-          this.overlayRef = this.overlay.create({
-            hasBackdrop: true,
-            positionStrategy: 
-              this.overlay
-                .position()
-                .global()
-                .centerHorizontally()
-                .centerVertically()
-           })
-           this.overlayRef.attach(new ComponentPortal(LoaderComponent))
-        }
+      if (!this.overlayRef) {
+        this.overlayRef = this.overlay.create({
+          hasBackdrop: true,
+          positionStrategy: this.overlay
+            .position()
+            .global()
+            .centerHorizontally()
+            .centerVertically(),
+        });
+        this.overlayRef.attach(new ComponentPortal(LoaderComponent));
+      }
     });
   }
-  
-public readonly spinner$ = defer(() => {
-  this.show();
-  return NEVER.pipe(
-    finalize(() => {
-      this.hide();
-    })
-  );
-}).pipe(share());
+
+  public readonly spinner$ = defer(() => {
+    this.show();
+    return NEVER.pipe(finalize(() => this.hide()));
+  }).pipe(share());
 
   hide(): void {
     if (this.overlayRef) {

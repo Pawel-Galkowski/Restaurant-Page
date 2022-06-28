@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core'
+import { Component, OnInit, Inject } from '@angular/core';
 
-import { Leader } from '../../shared/leader'
-import { LeaderService } from '../../services/leader.service'
+import { Leader } from '../../shared/leader';
+import { LeaderService } from '../../services/leader.service';
 import { flyInOut, expand } from '../../animations/app.animation';
 
 @Component({
@@ -11,24 +11,20 @@ import { flyInOut, expand } from '../../animations/app.animation';
   host: {
     '[@flyInOut]': 'true',
     '[@expand]': 'true',
-    'style': 'display: block;'
+    style: 'display: block;',
   },
-  animations: [
-    flyInOut(),
-    expand()
-  ]
+  animations: [flyInOut(), expand()],
 })
 export class AboutComponent implements OnInit {
-
   constructor(
     @Inject('imageUrl') public imageUrl: string,
     private leaderService: LeaderService
-  ) { }
-
-  leader: Leader = new Leader
-  leaders!: Leader[]
+  ) {}
+  leaders!: Leader[];
 
   ngOnInit(): void {
-    this.leaderService.getLeaders().subscribe((leaders: Leader[]) => this.leaders = leaders)
+    this.leaderService
+      .getLeaders()
+      .subscribe((leaders: Leader[]) => (this.leaders = leaders));
   }
 }

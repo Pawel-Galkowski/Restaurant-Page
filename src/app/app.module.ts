@@ -15,23 +15,27 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
-import { FormsModule, ReactiveFormsModule} from '@angular/forms'; 
-import { HttpClientModule, HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  HttpClientModule,
+  HttpClientJsonpModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Overlay } from '@angular/cdk/overlay';
 
-import { SpinnerInterceptor } from './interceptors/spinner.interceptor'
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { DishService } from './services/dish.service';
 import { BaseURL, imageUrl } from './shared/baseurl';
 import { HighlightDirective } from './directives/highlight.directive';
 import { DishdetailComponent } from './components/dishdetail/dishdetail.component';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './components/navigation/navigation.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
-import { TopAppComponent } from './components/top-app/top-app.component';
+import { TopAppComponent } from './components/header/header.component';
 import { GoogleMapComponent } from './components/google-map/google-map.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -71,7 +75,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    MatFormFieldModule, 
+    MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
@@ -80,7 +84,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     MatProgressSpinnerModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
   ],
   providers: [
     MatDialogModule,
@@ -91,7 +95,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     HttpClientJsonpModule,
     DishService,
     {
-      provide: 'BaseURL', 
+      provide: 'BaseURL',
       useValue: BaseURL,
     },
     {
@@ -105,14 +109,9 @@ import { LoaderComponent } from './components/loader/loader.component';
     },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [
-    LoginComponent
-  ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ]
+  entryComponents: [LoginComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {
-  constructor() {
-  }
+  constructor() {}
 }

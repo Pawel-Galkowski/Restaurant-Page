@@ -33,21 +33,21 @@
   </div>
   <div class="form-size">
     <h3>Send us your Feedback</h3>
-    <div *ngIf="isLoading && !isFeedback"> <!-- true && !false-->
+    <div *ngIf="isLoading && !isFeedback">
       <h4>Submitting Form</h4>
       <mat-spinner></mat-spinner>
     </div>
-    <div *ngIf="!isLoading && isFeedback"> <!-- !false && true-->
+    <div *ngIf="!isLoading && isFeedback">
       <h4>Your Submission</h4>
       <p>First Name: {{feedbackData?.firstname}}</p>
       <p>Last Name: {{feedbackData?.lastname}}</p>
       <p>Tel. Number: {{feedbackData?.telnum}}</p>
       <p>Email: {{feedbackData?.email}}</p>
       <p>Contact You?: {{feedbackData?.agree}}</p>
-      <p *ngIf="feedbackData?.agree">How?: {{feedbackData?.contacttype}}</p>
+      <p *ngIf="feedbackData?.agree">How?: {{feedbackData?.contactType}}</p>
       <p *ngIf="feedbackData?.message">Feedback: {{feedbackData?.message}}</p>
     </div>
-    <div *ngIf="!isLoading  && !isFeedback"> <!-- !false && !false-->
+    <div *ngIf="!isLoading  && !isFeedback">
       <p *ngIf="formErrors">Status form: {{ feedbackForm.status }}</p>
       <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
         <p>
@@ -75,7 +75,7 @@
             <mat-slide-toggle formControlName="agree">May we contact you?</mat-slide-toggle>
           </td>
           <td>
-            <mat-select placeholder="How?" formControlName="contacttype">
+            <mat-select placeholder="How?" formControlName="contactType">
               <mat-option *ngFor="let ctype of contactType" [value]="ctype">
                 {{ ctype }}
               </mat-option>

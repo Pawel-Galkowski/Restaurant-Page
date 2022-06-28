@@ -264,7 +264,11 @@ svg#clouds {
 
 .container {
     margin: 20px;
-    display:flex;
+    display: flex;
+}
+
+.cdk-overlay-pane {
+    height: auto;
 }
 
 /* Responsive Styles */

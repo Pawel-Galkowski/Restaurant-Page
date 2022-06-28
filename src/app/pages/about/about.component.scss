@@ -22,13 +22,13 @@
 
 @media screen and (max-width: 768px) {
     .grid-system {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      
-      & > * {
-        width: 100%
-      }
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        &>* {
+            width: 100%
+        }
     }
 }
 

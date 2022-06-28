@@ -5,11 +5,7 @@
         <h3>{{ dish.name | uppercase }}</h3>
       </mat-card-title>
     </mat-card-header>
-    <img
-      mat-card-image
-      src="{{ imageUrl + dish.image }}"
-      alt="{{ dish.name }}"
-    />
+    <img mat-card-image src="{{ imageUrl + dish.image }}" alt="{{ dish.name }}" />
     <mat-card-content>
       <p>{{ dish.description }}</p>
     </mat-card-content>
@@ -45,58 +41,27 @@
     </p>
     <mat-divider></mat-divider>
     <mat-card-footer>
-      <form
-        novalidate
-        [formGroup]="commentForm"
-        #fform="ngForm"
-        (ngSubmit)="onSubmit()"
-      >
+      <form novalidate [formGroup]="commentForm" #fform="ngForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
-          <input
-            matInput
-            formControlName="author"
-            placeholder="Name"
-            type="text"
-            required
-          />
+          <input matInput formControlName="author" placeholder="Name" type="text" required />
           <mat-error *ngIf="formErrors.author">{{
             formErrors.author
-          }}</mat-error>
+            }}</mat-error>
         </mat-form-field>
         <div class="label-vertical">
           <label id="rating-label">Rating</label>
           <label class="rating-value">{{ rate }}</label>
         </div>
-        <mat-slider
-          formControlName="rating"
-          [max]="5"
-          [min]="1"
-          step="1"
-          [(ngModel)]="rate"
-          thumbLabel="true"
-          tickInterval="1"
-          [ngModelOptions]="{ standalone: true }"
-          aria-labelledby="rating-label"
-        >
+        <mat-slider formControlName="rating" [max]="5" [min]="1" step="1" [(ngModel)]="rate" thumbLabel="true"
+          tickInterval="1" [ngModelOptions]="{ standalone: true }" aria-labelledby="rating-label">
         </mat-slider>
         <mat-form-field>
-          <textarea
-            matInput
-            formControlName="comment"
-            placeholder="Your Comment"
-            rows="4"
-            required
-          ></textarea>
+          <textarea matInput formControlName="comment" placeholder="Your Comment" rows="4" required></textarea>
           <mat-error *ngIf="formErrors.comment">{{
             formErrors.comment
-          }}</mat-error>
+            }}</mat-error>
         </mat-form-field>
-        <button
-          *ngIf="commentForm.valid"
-          type="submit"
-          mat-button
-          class="background-primary text-floral-white"
-        >
+        <button *ngIf="commentForm.valid" type="submit" mat-button class="background-primary text-floral-white">
           Submit
         </button>
       </form>
