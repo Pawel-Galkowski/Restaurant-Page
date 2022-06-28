@@ -8,7 +8,8 @@
     "start": "npm run angular",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "heroku-postbuild": "ng build"
   },
   "dependencies": {
     "@angular/animations": "^14.0.0",
