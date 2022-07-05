@@ -6,7 +6,7 @@
   "scripts": {
     "database": "nodemon --max_old_space_size=2560 ./json-server/app.js",
     "angular": "ng serve",
-    "start": "concurrently \"npm run angular\" \"npm run database\"",
+    "start": "npm run angular",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
