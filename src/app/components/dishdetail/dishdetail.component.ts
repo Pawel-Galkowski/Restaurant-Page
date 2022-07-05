@@ -159,6 +159,7 @@ export class DishdetailComponent implements OnInit, AfterContentChecked {
     }
   
     setPrevNext(dishId: string) {
+      this.dishIds
       const index = this.dishIds.indexOf(dishId);
 
       this.prev = this.dishIds[(this.dishIds.length + index - 1) % this.dishIds.length];
