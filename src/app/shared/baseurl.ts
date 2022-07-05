@@ -6,7 +6,7 @@
 
 // if other host
 
-const hostUrl:string = "https://store-database-app.herokuapp.com/dishes"
+const hostUrl:string = "https://store-database-app.herokuapp.com/"
 
 export const BaseURL = hostUrl
 export const imageUrl = hostUrl
