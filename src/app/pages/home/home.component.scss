@@ -21,15 +21,15 @@
 
 @media screen and (max-width: 1023px) {
     .container {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      
-      & > * {
-        width: calc(50% - 10px)
-      }
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        &>* {
+            width: calc(50% - 10px)
+        }
     }
 }
 
@@ -39,8 +39,8 @@
         flex-direction: column;
         gap: 10px;
 
-        & > * {
+        &>* {
             width: 100%
         }
-      }
+    }
 }

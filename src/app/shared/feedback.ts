@@ -4,8 +4,8 @@ export class Feedback {
     telnum!: number;
     email!: string;
     agree!: boolean;
-    contacttype?: string;
+    contactType?: string;
     message?: string;
 };
 
-export const ContactType = ['None', 'Tel', 'Email'];
+export type ContactType = 'None' | 'Tel' | 'Email';

@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <span class="logo"><img src="{{imageUrl}}images/logo.png" height="30" width="41" /></span>
+  <a mat-button routerLink="/home" routerLinkActive="active">
+    <fa-icon [icon]="icons.solid.faHome" size="lg"></fa-icon> <span class="menu-text"> Home</span>
+  </a>
+  <a mat-button routerLink="/about" routerLinkActive="active">
+    <fa-icon [icon]="icons.solid.faInfo" size="lg"></fa-icon> <span class="menu-text"> About</span>
+  </a>
+  <a mat-button routerLink="/menu" routerLinkActive="active">
+    <fa-icon [icon]="icons.solid.faList" size="lg"></fa-icon> <span class="menu-text"> Menu</span>
+  </a>
+  <a mat-button routerLink="/contact" routerLinkActive="active">
+    <fa-icon [icon]="icons.solid.faAddressCard" size="lg"></fa-icon> <span class="menu-text"> Contact</span>
+  </a>
+  <span class="flex-spacer"></span>
+  <a mat-button (click)="openLoginForm()">
+    <fa-icon [icon]="icons.solid.faRightToBracket"></fa-icon> <span class="menu-text"> Login</span>
+  </a>
+</mat-toolbar>

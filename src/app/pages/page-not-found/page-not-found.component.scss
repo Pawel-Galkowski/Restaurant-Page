@@ -6,25 +6,32 @@ $white: #f5f6fa;
 $black: #0C0E10;
 $gray: #202425;
 $blue: #446182;
+
 //Mixins
 @mixin smallscreens {
   @media (max-width: 770px) {
     @content;
-  };
-//Extends;
+  }
+
+  ;
+  //Extends;
 }
+
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: $font;
   color: $white;
 }
+
 .container {
   margin: 0 auto;
   width: 100%;
@@ -36,13 +43,16 @@ body {
   justify-content: space-around;
   background: linear-gradient(#0C0E10 0%, #446182 20%, #446182 75%, #0C0E10 100%);
 }
+
 .section {
   width: 40%;
+
   @include smallscreens {
     width: 100%;
     height: 40%;
   }
 }
+
 .heading {
   text-align: center;
   font-size: 3em;
@@ -50,11 +60,13 @@ body {
   margin: 1rem 0 0.5rem 0;
   padding: 0;
   text-shadow: 0 0 1rem #fefefe;
+
   @include smallscreens {
     font-size: 5em;
     line-height: 1.15;
   }
 }
+
 .subheading {
   text-align: center;
   max-width: 480px;
@@ -63,20 +75,28 @@ body {
   padding: 0 1rem;
   margin: 0 auto;
   text-shadow: 0 0 1rem #fefefe;
+
   @include smallscreens {
     font-size: 1.3em;
     line-height: 1.15;
     max-width: 100%;
-  }//Right Section Styles
+  }
+
+  //Right Section Styles
 }
+
 @keyframes glow {
   0% {
     text-shadow: 0 0 1rem #fefefe;
   }
+
   50% {
     text-shadow: 0 0 1.85rem #ededed;
   }
+
   100% {
     text-shadow: 0 0 1rem #fefefe;
   }
-};
+}
+
+;

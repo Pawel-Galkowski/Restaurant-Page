@@ -1,8 +1,12 @@
-// if same address as angular app
-// const port:any = 8080
+// if same address as angular app 
 
-// export const BaseURL = window.location.protocol + "//" + window.location.hostname + ':' + port +'/';
-// export const imageUrl = window.location.protocol + "//" + window.location.hostname + ':' + port +'/';
+/* 
+const port:any = 8080
+
+export const BaseURL = window.location.protocol + "//" + window.location.hostname + ':' + port +'/';
+export const imageUrl = window.location.protocol + "//" + window.location.hostname + ':' + port +'/';
+
+*/
 
 // if other host
 

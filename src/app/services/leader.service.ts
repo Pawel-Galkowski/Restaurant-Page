@@ -9,21 +9,23 @@ import { Leader } from '../shared/leader';
 import { ProcessHTTPMsgService } from './process-httpmsg.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LeaderService {
-
-  constructor(private http: HttpClient,
-    private processHTTPMsgService: ProcessHTTPMsgService) { }
+  constructor(
+    private http: HttpClient,
+    private processHTTPMsgService: ProcessHTTPMsgService
+  ) {}
 
   getLeaders(): Observable<Leader[]> {
-    return this.http.get<Leader[]>(BaseURL + 'leadership')
+    return this.http
+      .get<Leader[]>(BaseURL + 'leadership')
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
   getFeaturedLeader(): Observable<Leader | any> {
     return this.getLeaders()
-    .pipe(map(leaders => leaders.filter(leader => leader.featured)[0]))
-    .pipe(catchError(error => error))
+      .pipe(map((leaders) => leaders.filter((leader) => leader.featured)[0]))
+      .pipe(catchError((error) => error));
   }
 }

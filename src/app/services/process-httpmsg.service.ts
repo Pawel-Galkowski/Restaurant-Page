@@ -4,11 +4,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProcessHTTPMsgService {
-
-  constructor() { }
+  constructor() {}
 
   public handleError(error: HttpErrorResponse | any) {
     let errMsg: string;
