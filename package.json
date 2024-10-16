@@ -4,12 +4,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "angular": "ng serve",
-    "start": "npm run angular",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "heroku-postbuild": "ng build"
+    "test": "ng test"
   },
   "dependencies": {
     "@angular/animations": "^14.0.0",
